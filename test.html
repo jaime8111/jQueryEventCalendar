@@ -1,0 +1,27 @@
+<?
+    include_once('includes/header.php');
+?>
+<body id="responsiveDemo">
+
+	<div class="container">
+		<div class="row">
+			<div class="g12">
+				<h2 class="h4">Default Demo</h2>
+				<p class="demoDesc">Example of jQuery Events Calendar with default parameters</p>
+				<div id="eventCalendarDefault"></div>
+
+
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarDefault").eventCalendar({
+							eventsjson: 'json/events.json.php' // link to events json
+						});
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+</body>
+<?
+    include_once('includes/footer.php');
+?>

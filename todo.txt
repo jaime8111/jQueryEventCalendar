@@ -1,0 +1,61 @@
+new_event.php
+    pagina independiente
+        estilos bootstrap
+    fields
+        date_from
+        date_to
+        type
+            create_type
+            edit_type
+        title
+        description (que acepte HTML)
+        link
+        color
+
+edit_event.php?event_id
+
+event.ddbb.json
+    get events from ddbb
+    filters
+        date_from
+        date_to
+        type
+
+calendar
+    parameters
+        editor: show or hide new/edit event links
+        htmlEventsSelector: get events from HTML list
+        dateFormatToShow: how to show dates on events
+
+
+TODOS:
+- option to work without a json. just html
+- Add/edit events to the jQuery Event Calendar
+- parameter: date format
+- parameter: disabled dates before & after
+
+
+- if month start on saturday or sunday, there is one more week, and the calendar hide the "Next events" text.
+- Events of several days
+- potential bug in jquery.eventcalendar.js file on line 95
+it must be toString() after the date. My firebug complained about it.
+
+- Timeago Plugin integration
+
+- check on >= IE7
+
+
+- add mode info fields to json
+- CSS independent (bootstrap)
+
+
+
+DOCUMENTATION
+-------------
+
+DATABASE VERSION:
+In this version you can create and edit events
+
+First you need to create the tables structure in your SQL database. You can use events.database.sql to import it.
+
+Open the file /includes/config.php and edit the variables.

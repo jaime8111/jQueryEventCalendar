@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>jQuery Event Calendar Demo Page</title>
+	<link rel="shortcut icon" href="images/favicon.ico" />
+
+	<!-- Grid CSS File (only needed for demo page) -->
+	<link rel="stylesheet" href="css/paragridma.css">
+
+	<!-- Core CSS File. The CSS code needed to make eventCalendar works -->
+	<link rel="stylesheet" href="css/eventCalendar.css">
+
+	<!-- Theme CSS file: it makes eventCalendar nicer -->
+	<link rel="stylesheet" href="css/eventCalendar_theme_responsive.css">
+
+	<!--<script src="js/jquery.js" type="text/javascript"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+
+</head>
+<body id="responsiveDemo">
+	<div class="container" id="introPanel">
+		<div class="row">
+			<div class="g4 ac">
+				<img src="img/eventsCalendarIcon_250.png">
+			</div>
+			<div class="g8">
+				<a href="http://www.vissit.com/jquery-event-calendar-plugin-english-version" class="fr">
+					<img src="img/PluginPage.png" />
+				</a>
+				<h1 class="h3">
+					jQuery Event Calendar Demo Page
+				</h1>
+
+				<p>
+					jQuery plugin to show events in a calendar in a very confortable way
+				</p>
+				<p>
+					Main features:
+				</p>
+				<ul class="features disc">
+					<li><strong>Fluid Calendar</strong>: calendar will be shown with the width of its parent. Size is recalculated on window resize. So <strong>you can use it in your responsive designs</strong></li>
+					<li><strong>Change Style as you like</strong>: You can edit the .css file to restyle</li>
+					<li><strong>Light</strong>: Less than 8kb of Javascript(minified)</li>
+					<li><strong>jQuery rules!</strong>: It uses all the power of jQuery, but you can also use it with frameworks like Zepto.js</li>
+					<li><strong>Highly customizable</strong>: You can change almost everything. Look at the following examples</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="g6">
+				<h2 class="h4">Human Date Format</h2>
+				<p class="demoDesc">Most of you don't like timestamp date format, so now you can use another formats</p>
+				<div id="eventCalendarHumanDate"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarHumanDate").eventCalendar({
+							eventsjson: 'json/event.humanDate.json.php',
+							jsonDateFormat: 'human'  // 'YYYY-MM-DD HH:MM:SS'
+						});
+					});
+				</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  jsonDateFormat: 'human'
+});</pre>
+			</div>
+			<div class="g6">
+				<h2 class="h4">Custom Date Format to display</h2>
+				<p class="demoDesc">Now you can change the format date to be displayed on events. I use <a target="_blank" href="http://momentjs.com/docs/">moment.js</a> to do it.</p>
+				<div id="eventCalendarCustomDate"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarCustomDate").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							dateFormat: 'dddd MM-D-YYYY'
+						});
+					});
+				</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  dateFormat: 'dddd MM-D-YYYY'
+});</pre>
+			</div>
+		</div>
+		<div class="row">
+			<div class="g4">
+				<h2 class="h4">Default Demo</h2>
+				<p class="demoDesc">Example of jQuery Events Calendar with default parameters</p>
+				<div id="eventCalendarDefault"></div>
+				<pre>$(id).eventCalendar({
+  // link to events json
+  eventsjson: 'file.json'
+});</pre>
+
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarDefault").eventCalendar({
+							eventsjson: 'json/events.json.php' // link to events json
+						});
+					});
+				</script>
+			</div>
+			<div class="g4">
+				<h2 class="h4">No cache</h2>
+				<p class="demoDesc">The plugin only calls once to the json file, so it has to contain all events. After that call, the plugin will filter the results</p>
+				<div id="eventCalendarNoCache"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarNoCache").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							cacheJson: false
+						});
+					});
+				</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  cacheJson: false
+}); </pre>
+			</div>
+			<div class="g4">
+				<h2 class="h4">inline json</h2>
+				<p class="demoDesc">The json is written directly inside the plugin function via javaScript (no ajax call to get the events).</p>
+				<div id="eventCalendarInline"></div>
+				<script>
+					$(document).ready(function() {
+						var eventsInline = [{ "date": "1337594400000", "type": "meeting", "title": "Project A meeting", "description": "Lorem Ipsum dolor set", "url": "http://www.event1.com/" },{ "date": "1337677200000", "type": "demo", "title": "Project B demo", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "url": "http://www.event2.com/" },{ "date": "1338897600000", "type": "meeting", "title": "Project A meeting", "description": "Lorem Ipsum dolor set", "url": "http://www.event1.com/" },{ "date": "1338885237000", "type": "demo", "title": "Project B demo", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "url": "http://www.event2.com/" },{ "date": "1341750647000", "type": "meeting", "title": "Project A meeting", "description": "Lorem Ipsum dolor set", "url": "http://www.event1.com/" },{ "date": "1342614647000", "type": "demo", "title": "Project B demo", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "url": "http://www.event2.com/" },{ "date": "1344515447000", "type": "meeting", "title": "Project A meeting", "description": "Lorem Ipsum dolor set", "url": "http://www.event1.com/" },{ "date": "1345033847000", "type": "demo", "title": "Project B demo", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "url": "http://www.event2.com/" },{ "date": "1347712247000", "type": "meeting", "title": "Project A meeting", "description": "Lorem Ipsum dolor set", "url": "http://www.event1.com/" },{ "date": "1348230647000", "type": "demo", "title": "Project B demo", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "url": "http://www.event2.com/" },{ "date": "1349094647000", "type": "meeting", "title": "Project A meeting", "description": "Lorem Ipsum dolor set", "url": "http://www.event1.com/" },{ "date": "1351600247", "type": "demo", "title": "Project B demo", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "url": "http://www.event2.com/" }];
+
+						$("#eventCalendarInline").eventCalendar({
+							jsonData: eventsInline
+						});
+					});
+				</script>
+<pre>var eventsInline = [{ json }];
+$(id).eventCalendar({
+  jsonData: eventsInline
+}); </pre>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="g4">
+				<h2 class="h4">Localization</h2>
+				<p class="demoDesc">We have total control about the language of the plugin</p>
+				<div id="eventCalendarLocale"></div>
+			<script>
+				$(document).ready(function() {
+					$("#eventCalendarLocale").eventCalendar({
+						eventsjson: 'json/events.json.php',
+						monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+							"Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
+						dayNames: [ 'Domingo','Lunes','Martes','Miércoles',
+							'Jueves','Viernes','Sabado' ],
+						dayNamesShort: [ 'Dom','Lun','Mar','Mie', 'Jue','Vie','Sab' ],
+						txt_noEvents: "No hay eventos para este periodo",
+						txt_SpecificEvents_prev: "",
+						txt_SpecificEvents_after: "eventos:",
+						txt_next: "siguiente",
+						txt_prev: "anterior",
+						txt_NextEvents: "Próximos eventos:",
+						txt_GoToEventUrl: "Ir al evento"
+					});
+				});
+			</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
+  dayNames: [ 'Domingo','Lunes','Martes','Miércoles',
+    'Jueves','Viernes','Sabado' ],
+  dayNamesShort: [ 'Dom','Lun','Mar','Mie', 'Jue','Vie','Sab' ],
+  txt_noEvents: "No hay eventos para este periodo",
+  txt_SpecificEvents_prev: "",
+  txt_SpecificEvents_after: "eventos:",
+  txt_next: "siguiente",
+  txt_prev: "anterior",
+  txt_NextEvents: "Próximos eventos:",
+  txt_GoToEventUrl: "Ir al evento",
+}); </pre>
+			</div>
+			<div class="g4">
+				<h2 class="h4">Limit Results</h2>
+				<p class="demoDesc">It is possible to limit the number of events to show. But if we click on a day, results will not be filtered</p>
+				<div id="eventCalendarLimit"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarLimit").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							eventsLimit: 2
+						});
+					});
+				</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  eventsLimit: 2
+}); </pre>
+			</div>
+			<div class="g4">
+				<h2 class="h4">Start week on Sunday</h2>
+				<p class="demoDesc">Also you can customize the day when the week starts</p>
+				<div id="eventCalendarCalendarSunday"></div>
+			<script>
+				$(document).ready(function() {
+					$("#eventCalendarCalendarSunday").eventCalendar({
+						eventsjson: 'json/events.json.php',
+						startWeekOnMonday: false
+					});
+				});
+			</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  startWeekOnMonday: false
+});</pre>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="g8">
+				<h2 class="h4">Calendar display</h2>
+				<p class="demoDesc">You can show all the days in a single line to make calendar widget smaller</p>
+				<div id="eventCalendarCalendarLine"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarCalendarLine").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							showDayAsWeeks: false
+						});
+					});
+				</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  showDayAsWeeks: false
+});</pre>
+			</div>
+			<div class="g4">
+				<h2 class="h4">Hide week days</h2>
+				<p class="demoDesc">Hide the day names in the calendar view</p>
+				<div id="eventCalendarWeekDays"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarWeekDays").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							showDayNameInCalendar: false
+						});
+					});
+				</script>
+			<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  showDayNameInCalendar: false
+});</pre>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="g4">
+				<h2 class="h4">Show Events description</h2>
+				<p class="demoDesc">Events description is hide by default (you can show it clicking on the event title), but if you want they can be always visible.</p>
+				<div id="eventCalendarShowDescription"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarShowDescription").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							showDescription: true
+						});
+					});
+				</script>
+			<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  showDescription: true
+});</pre>
+			</div>
+			<div class="g4">
+				<h2 class="h4">Show all descriptions</h2>
+				<p class="demoDesc">By default, the plugin only shows the event that you select, but you can open all the descriptions in which you click on</p>
+				<div id="eventCalendarOnlyOneDescription"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarOnlyOneDescription").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							onlyOneDescription: false
+						});
+					});
+				</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  onlyOneDescription: false
+});</pre>
+			</div>
+			<div class="g4">
+				<h2 class="h4">Animation Speed</h2>
+				<p class="demoDesc">Also you can customize the speed and the opacity of the widget animation</p>
+				<div id="eventCalendarAnimation"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarAnimation").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							moveSpeed: 2000,
+							moveOpacity: 1
+						});
+					});
+				</script>
+			<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  moveSpeed: 2000,
+  moveOpacity: 1
+});</pre>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="g6">
+				<h2 class="h4">Events Scrollable</h2>
+				<p class="demoDesc">It is possible to add a Scroll panel for the events list to avoid panel resize on date changes</p>
+				<div id="eventCalendarScroll"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarScroll").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							eventsScrollable: true
+						});
+					});
+				</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  eventsScrollable: true
+});</pre>
+			</div>
+			<div class="g6">
+				<h2 class="h4">Open links in new window</h2>
+				<p class="demoDesc">You can open event links in a new window</p>
+				<div id="eventCalendarNewWindow"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarNewWindow").eventCalendar({
+							eventsjson: 'json/events.json.php',
+							openEventInNewWindow: true,
+							showDescription: true // also it can be false
+						});
+					});
+				</script>
+<pre>$(id).eventCalendar({
+  eventsjson: 'file.json',
+  openEventInNewWindow: true,
+  showDescription: true // also it can be false
+});</pre>
+			</div>
+
+
+
+
+	</div>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div id="paradigmaBox" class="g6 poweredBy clearfix">
+				<img src="img/paradigmaLogo.png" />
+				<div class="data">
+					<a href="http://www.paradigmatecnologico.com" target="_blank" class="name">Paradigma Tecnológico</a>
+					<a href="http://twitter.com/#!/paradigmate" target="_blank" class="twitter">@paradigmate</a>
+				</div>
+
+			</div>
+			<div id="vissitBox" class="g6 poweredBy clearfix">
+				<img src="img/jaime.png" />
+				<div class="data">
+					<a href="http://www.vissit.com" target="_blank" class="name">Jaime Fernández</a>
+					<a href="http://twitter.com/#!/vissit" target="_blank" class="twitter">@vissit</a>
+				</div>
+				<a href="http://www.vissit.com/jquery-event-calendar-plugin-english-version" class="fr">
+					<img src="img/PluginPage.png" />
+				</a>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div id="thanksPanel" class="g6">
+				<p class="nm">
+					Special thanks to:
+				</p>
+				<ul class="disc">
+					<li>
+						<strong>Nerea Navarro</strong> <a href="http://twitter.com/#!/nereaestonta">@nereaestonta</a> - Translation & Testing
+					</li>
+					<li>
+						<strong>Juan Francisco del Río</strong> <a href="http://twitter.com/#!/juanriopacheco">@juanriopacheco</a> - Javascript Knowledge
+					</li>
+					<li>
+						<strong>Nuria Martin</strong> <a href="http://twitter.com/#!/nmartins">@nmartins</a> - Design
+					</li>
+					<li>
+						<strong>Luis Calvo</strong> <a href="http://twitter.com/#!/LuisCalvoDiaz">@LuisCalvoDiaz</a> - Testing
+					</li>
+					<li>
+						<strong>David Montalvo</strong> <a href="http://twitter.com/#!/davidmontalvo">@davidmontalvo</a> - Testing
+					</li>
+				</ul>
+
+			</div>
+			<div class="g6">
+				<div id="license">
+					<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">jQuery Event Calendar Plugin</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.vissit.com/jquery-event-calendar-plugin" property="cc:attributionName" rel="cc:attributionURL">Jaime Fernandez, Paradigma Tecnológico</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Reconocimiento-CompartirIgual 3.0 Unported License</a>.
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!--script src="js/jquery.timeago.js" type="text/javascript"></script-->
+<!--<script src="js/jquery.eventCalendar.min.js" type="text/javascript"></script>-->
+<script src="js/moment.js" type="text/javascript"></script>
+<!--script src="js/jquery.eventCalendar.js" type="text/javascript"></script-->
+<script src="js/jquery.eventCalendar.min.js" type="text/javascript"></script>
+
+
+
+
+</html>
