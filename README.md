@@ -1,5 +1,6 @@
 jQuery Event Calendar:
-----------------
+=================
+
 jQuery plugin to show events in a calendar in a very confortable way
 
 Main features:
