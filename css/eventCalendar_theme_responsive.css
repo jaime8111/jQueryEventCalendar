@@ -111,10 +111,12 @@
 			}
 				.eventsCalendar-daysList.showAsWeek li.empty {
 					background-color: #ccc;
-					min-height:29px;
+					min-height:27px;
+					border-top: solid 1px #ccc;
 				}
 			.eventsCalendar-day a {
-				text-decoration:none;
+				text-decoration:non
+				e;
 				font-size:10px;
 				color:#424242;
 			}
