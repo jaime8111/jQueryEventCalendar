@@ -211,13 +211,13 @@
 			abbrev = 'th'
 		} else {
 			if (last_char === '1') {
-				abbrev = 'st'
+				abbrev = eventsOpts.txt_NumAbbrevSt;
 			} else if (last_char === '2') {
-				abbrev = 'nd'
+				abbrev = eventsOpts.txt_NumAbbrevNd;
 			} else if (last_char === '3') {
-				abbrev = 'rd'
+				abbrev = eventsOpts.txt_NumAbbrevRd;
 			} else {
-				abbrev = 'th'
+				abbrev = eventsOpts.txt_NumAbbrevTh;
 			}
 		}
 		return num + abbrev
@@ -450,6 +450,10 @@ $.fn.eventCalendar.defaults = {
 	txt_prev: "prev",
 	txt_NextEvents: "Next events:",
 	txt_GoToEventUrl: "See the event",
+	txt_NumAbbrevTh: "th",
+	txt_NumAbbrevSt: "st",
+	txt_NumAbbrevNd: "nd",
+	txt_NumAbbrevRd: "rd",
 	showDayAsWeeks: true,
 	startWeekOnMonday: true,
 	showDayNameInCalendar: true,
