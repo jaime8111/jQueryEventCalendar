@@ -23,7 +23,7 @@
 	this.each(function(){
 
 		flags.wrap = $(this);
-		flags.wrap.addClass('eventCalendar-wrap').append("<div class='eventsCalendar-list-wrap'><p class='eventsCalendar-subtitle'></p><span class='eventsCalendar-loading'>eventsOpts.txt_loading</span><div class='eventsCalendar-list-content'><ul class='eventsCalendar-list'></ul></div></div>");
+		flags.wrap.addClass('eventCalendar-wrap').append("<div class='eventsCalendar-list-wrap'><p class='eventsCalendar-subtitle'></p><span class='eventsCalendar-loading'>" + eventsOpts.txt_loading + "</span><div class='eventsCalendar-list-content'><ul class='eventsCalendar-list'></ul></div></div>");
 
 		if (eventsOpts.eventsScrollable) {
 			flags.wrap.find('.eventsCalendar-list-content').addClass('scrollable');
