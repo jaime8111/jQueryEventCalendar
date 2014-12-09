@@ -1,11 +1,11 @@
 /* =
-	jquery.eventCalendar.js
-	version: 0.54
-	date: 18-04-2013
-	author:
-		Jaime Fernandez (@vissit)
-	company:
-		Paradigma Tecnologico (@paradigmate)
+    jquery.eventCalendar.js
+    version: 0.65
+    date: 09-12-2014
+    author:
+        Jaime Fernandez (@vissit)
+    company:
+        Paradigma Tecnologico (@paradigmate)
 */
 
 ;$.fn.eventCalendar = function(options){
@@ -23,7 +23,7 @@
 	this.each(function(){
 
 		flags.wrap = $(this);
-		flags.wrap.addClass('eventCalendar-wrap').append("<div class='eventsCalendar-list-wrap'><p class='eventsCalendar-subtitle'></p><span class='eventsCalendar-loading'>eventsOpts.txt_loading</span><div class='eventsCalendar-list-content'><ul class='eventsCalendar-list'></ul></div></div>");
+		flags.wrap.addClass('eventCalendar-wrap').append("<div class='eventsCalendar-list-wrap'><p class='eventsCalendar-subtitle'></p><span class='eventsCalendar-loading'>"+eventsOpts.txt_loading+"</span><div class='eventsCalendar-list-content'><ul class='eventsCalendar-list'></ul></div></div>");
 
 		if (eventsOpts.eventsScrollable) {
 			flags.wrap.find('.eventsCalendar-list-content').addClass('scrollable');
