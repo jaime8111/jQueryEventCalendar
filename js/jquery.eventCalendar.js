@@ -1,7 +1,7 @@
 /* =
     jquery.eventCalendar.js
-    version: 0.65
-    date: 09-12-2014
+    version: 0.66
+    date: 25-02-2015
     author:
         Jaime Fernandez (@vissit)
     company:
@@ -208,7 +208,7 @@
 	function num_abbrev_str(num) {
 		var len = num.length, last_char = num.charAt(len - 1), abbrev
 		if (len === 2 && num.charAt(0) === '1') {
-			abbrev = 'th'
+			abbrev = eventsOpts.txt_NumAbbrevTh;
 		} else {
 			if (last_char === '1') {
 				abbrev = eventsOpts.txt_NumAbbrevSt;
