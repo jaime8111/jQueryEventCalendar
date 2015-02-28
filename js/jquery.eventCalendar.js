@@ -248,12 +248,28 @@
 
 		} else if (!eventsOpts.cacheJson || !direction) {
 			// first load: load json and save it to future filters
-			$.getJSON(eventsOpts.eventsjson + "?limit="+limit+"&year="+year+"&month="+month+"&day="+day, function(data) {
-				flags.eventsJson = data; // save data to future filters
-				getEventsData(flags.eventsJson, limit, year, month, day, direction);
-			}).error(function() {
-				showError("error getting json: ");
-			});
+            $.ajax({
+                dataType: "json",
+                type: eventsOpts.httpMethod,
+                url: eventsOpts.eventsjson,
+                data: {
+
+                  "limit": limit,
+                  "year": year,
+                  "month": month,
+                  "day": day
+
+                },
+                success: function(data) {
+                    flags.eventsJson = data; // save data to future filters
+                    getEventsData(flags.eventsJson, limit, year, month, day, direction);
+                },
+
+                error: function() {
+                showError("error getting json: ");
+                }
+            });
+
 		} else {
 			// filter previus saved json
 			getEventsData(flags.eventsJson, limit, year, month, day, direction);
@@ -436,7 +452,7 @@
 
 // define the parameters with the default values of the function
 $.fn.eventCalendar.defaults = {
-    eventsjson: 'js/events.json',
+    eventsjson: 'json/events.json',
 	eventsLimit: 4,
 	monthNames: [ "January", "February", "March", "April", "May", "June",
 		"July", "August", "September", "October", "November", "December" ],
@@ -467,7 +483,8 @@ $.fn.eventCalendar.defaults = {
 	moveSpeed: 500,	// speed of month move when you clic on a new date
 	moveOpacity: 0.15, // month and events fadeOut to this opacity
 	jsonData: "", 	// to load and inline json (not ajax calls)
-	cacheJson: true	// if true plugin get a json only first time and after plugin filter events
+	cacheJson: true,	// if true plugin get a json only first time and after plugin filter events
 					// if false plugin get a new json on each date change
+    httpMethod: "GET"
 };
 
