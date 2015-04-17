@@ -92,7 +92,10 @@
 		});
 
 		function sortJson(a, b){
-			return a.date.toLowerCase() > b.date.toLowerCase() ? 1 : -1;
+			if ( typeof a.date === 'string' ) {
+				return a.date.toLowerCase() > b.date.toLowerCase() ? 1 : -1;
+			}
+			return a.date > b.date ? 1 : -1;
 		};
 
 		function dateSlider(show, year, month) {
