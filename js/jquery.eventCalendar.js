@@ -1,7 +1,7 @@
 /* =
     jquery.eventCalendar.js
-    version: 0.66
-    date: 25-02-2015
+    version: 0.67
+    date: 14-03-2015
     author:
         Jaime Fernandez (@vissit)
     company:
@@ -17,7 +17,7 @@
 			wrap: "",
 			directionLeftMove: "300",
 			eventsJson: {}
-		}
+		};
 
 		// each eventCalendar will execute this function
 		this.each(function(){
@@ -58,7 +58,7 @@
 					month = flags.wrap.attr('data-current-month');
 
 				getEvents(eventsOpts.eventsLimit, year, month,false, "month");
-			})
+			});
 
 
 
@@ -76,10 +76,10 @@
 					var eventTarget = $(this).attr('target');
 
 					// create a button to go to event url
-					desc.append('<a href="' + eventUrl + '" target="'+eventTarget+'" class="bt">'+eventsOpts.txt_GoToEventUrl+'</a>')
+					desc.append('<a href="' + eventUrl + '" target="'+eventTarget+'" class="bt">'+eventsOpts.txt_GoToEventUrl+'</a>');
 				}
 
-				if (desc.is(':visible')) {
+				if ( desc.is(':visible') ) {
 					desc.slideUp();
 				} else {
 					if(eventsOpts.onlyOneDescription) {
@@ -93,9 +93,9 @@
 
 		function sortJson(a, b){
 			return a.date.toLowerCase() > b.date.toLowerCase() ? 1 : -1;
-		};
+		}
 
-		function dateSlider(show, year, month) {
+		function dateSlider(show) {
 			var $eventsCalendarSlider = $("<div class='eventsCalendar-slider'></div>"),
 				$eventsCalendarMonthWrap = $("<div class='eventsCalendar-monthWrap'></div>"),
 				$eventsCalendarTitle = $("<div class='eventsCalendar-currentTitle'><a href='#' class='monthTitle'></a></div>"),
@@ -103,7 +103,7 @@
 				$eventsCalendarDaysList = $("<ul class='eventsCalendar-daysList'></ul>"),
 				date = new Date();
 
-			if (!flags.wrap.find('.eventsCalendar-slider').size()) {
+			if ( !flags.wrap.find('.eventsCalendar-slider').size() ) {
 				flags.wrap.prepend($eventsCalendarSlider);
 				$eventsCalendarSlider.append($eventsCalendarMonthWrap);
 			} else {
@@ -156,7 +156,8 @@
 
 			// print all month days
 			var daysOnTheMonth = 32 - new Date(year, month, 32).getDate();
-			var daysList = [];
+			var daysList = [],
+				i;
 			if (eventsOpts.showDayAsWeeks) {
 				$eventsCalendarDaysList.addClass('showAsWeek');
 
@@ -164,7 +165,7 @@
 				if (eventsOpts.showDayNameInCalendar) {
 					$eventsCalendarDaysList.addClass('showDayNames');
 
-					var i = 0;
+					i = 0;
 					// if week start on monday
 					if (eventsOpts.startWeekOnMonday) {
 						i = 1;
@@ -188,6 +189,7 @@
 					weekDay = dt.getDay() - 1;
 				}
 				if (weekDay < 0) { weekDay = 6; } // if -1 is because day starts on sunday(0) and week starts on monday
+
 				for (i = weekDay; i > 0; i--) {
 					daysList.push('<li class="eventsCalendar-day empty"></li>');
 				}
@@ -206,7 +208,8 @@
 		}
 
 		function num_abbrev_str(num) {
-			var len = num.length, last_char = num.charAt(len - 1), abbrev
+			var len = num.length, last_char = num.charAt(len - 1), abbrev;
+
 			if (len === 2 && num.charAt(0) === '1') {
 				abbrev = eventsOpts.txt_NumAbbrevTh;
 			} else {
@@ -220,20 +223,20 @@
 					abbrev = eventsOpts.txt_NumAbbrevTh;
 				}
 			}
-			return num + abbrev
+			return num + abbrev;
 		}
 
 		function getEvents(limit, year, month, day, direction) {
-			var limit = limit || 0;
-			var year = year || '';
-			var day = day || '';
+			limit = limit || 0;
+			year = year || '';
+			day = day || '';
 
 			// to avoid problem with january (month = 0)
 
 			if (typeof month != 'undefined') {
-				var month = month;
+				month = month;
 			} else {
-				var month = '';
+				month = '';
 			}
 
 			//var month = month || '';
@@ -269,14 +272,15 @@
 			directionLeftMove = "-=" + flags.directionLeftMove;
 			eventContentHeight = "auto";
 
-			subtitle = flags.wrap.find('.eventsCalendar-list-wrap .eventsCalendar-subtitle')
-			if (!direction) {
+			subtitle = flags.wrap.find('.eventsCalendar-list-wrap .eventsCalendar-subtitle');
+
+			if ( !direction ) {
 				// first load
 				subtitle.html(eventsOpts.txt_NextEvents);
 				eventContentHeight = "auto";
 				directionLeftMove = "-=0";
 			} else {
-				if (day != '') {
+				if (day !== '') {
 					subtitle.html(eventsOpts.txt_SpecificEvents_prev + eventsOpts.monthNames[month] + " " + num_abbrev_str(day) + " " + eventsOpts.txt_SpecificEvents_after);
 				} else {
 					subtitle.html(eventsOpts.txt_SpecificEvents_prev + eventsOpts.monthNames[month] + " " + eventsOpts.txt_SpecificEvents_after);
@@ -349,9 +353,9 @@
 						if (limit === 0 || limit > i) {
 							// if month or day exist then only show matched events
 
-							if ((month === false || month == eventMonth)
-									&& (day == '' || day == eventDay)
-									&& (year == '' || year == eventYear) // get only events of current year
+							if ((month === false || month === eventMonth)
+									&& (day === '' || day === eventDay)
+									&& (year === '' || year === eventYear) // get only events of current year
 								) {
 									// if initial load then load only future events
 									if (month === false && eventDate < new Date()) {
@@ -359,11 +363,12 @@
 									} else {
 										//eventStringDate = eventDay + "/" + eventMonthToShow + "/" + eventYear;
 										eventStringDate = moment(eventDate).format(eventsOpts.dateFormat);
+										var eventTitle;
 
 										if (event.url) {
-											var eventTitle = '<a href="'+event.url+'" target="' + eventLinkTarget + '" class="eventTitle">' + event.title + '</a>';
+											eventTitle = '<a href="'+event.url+'" target="' + eventLinkTarget + '" class="eventTitle">' + event.title + '</a>';
 										} else {
-											var eventTitle = '<span class="eventTitle">'+event.title+'</span>';
+											eventTitle = '<span class="eventTitle">'+event.title+'</span>';
 										}
 										events.push('<li id="' + key + '" class="'+event.type+'"><time datetime="'+eventDate+'"><em>' + eventStringDate + '</em><small>'+eventHour+":"+eventMinute+'</small></time>'+eventTitle+'<p class="eventDesc ' + eventDescClass + '">' + event.description + '</p></li>');
 										i++;
