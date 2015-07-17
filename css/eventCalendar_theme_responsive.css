@@ -17,7 +17,7 @@
 	background-color:#fff;
 	color:#807E7E;
 }
-	.eventCalendar-wrap .arrow {
+	.eventCalendar-wrap .eventCalendar-arrow {
 		text-decoration:none;
 		color:#fff;
 		padding:0 5px;
@@ -25,11 +25,11 @@
 		top:9px;
 		padding:8px 10px;
 	}
-		.eventCalendar-wrap .arrow.prev {
+		.eventCalendar-wrap .eventCalendar-arrow.prev {
 
 		}
-		.eventCalendar-wrap .arrow:hover { opacity:0.7;}
-		.eventCalendar-wrap .arrow span {
+		.eventCalendar-wrap .eventCalendar-arrow:hover { opacity:0.7;}
+		.eventCalendar-wrap .eventCalendar-arrow span {
 			height: 0;
 			width: 0;
 			font-size: 0;
@@ -40,38 +40,38 @@
 			float:left;
 			text-indent:-5000px;
 		}
-			.eventCalendar-wrap .arrow.prev span {
+			.eventCalendar-wrap .eventCalendar-arrow.eventCalendar-prev span {
 				border-left-width:0;
 				border-right: 6px solid #fff;
 			}
-	.eventsCalendar-slider { height:80px;}
+	.eventCalendar-slider { height:80px;}
 
-	.eventsCalendar-monthWrap {
+	.eventCalendar-monthWrap {
 		border-radius:5px;
 		top:10px;
 		left:0px;
 	}
-		.eventsCalendar-currentTitle {
+		.eventCalendar-currentTitle {
 			line-height:25px;
 			background-color:#138DA5;
 			outline:1px solid #138DA5;
 			border:1px solid #E3E3E3;
 			border-width:1px 0;
 		}
-			.eventsCalendar-currentTitle .monthTitle {
+			.eventCalendar-currentTitle .eventCalendar-monthTitle {
 				font-size:110%;
 				text-decoration:none;
 				font-weight:bold;
 				color:#fff;
 			}
 
-		.eventsCalendar-daysList {
+		.eventCalendar-daysList {
 			zoom: 1;
 			padding:0;
 			width:100%;
 
 		}
-			.eventsCalendar-daysList.showAsWeek {
+			.eventCalendar-daysList.eventCalendar-showAsWeek {
 				margin:10px 5px;
 				width:auto;
 
@@ -94,88 +94,87 @@
 				);
 
 			}
-			.eventsCalendar-daysList.showDayNames.showAsWeek {
+			.eventCalendar-daysList.showDayNames.eventCalendar-showAsWeek {
 
 				border-radius:5px 5px 0 0;
 			}
-			.eventsCalendar-daysList:before, .eventsCalendar-daysList:after { content:""; display:table; }
-			.eventsCalendar-daysList:after { clear: both; }
-			.eventsCalendar-day-header {
+			.eventCalendar-daysList:before, .eventCalendar-daysList:after { content:""; display:table; }
+			.eventCalendar-daysList:after { clear: both; }
+			.eventCalendar-day-header {
 				text-transform:lowercase;
 				text-align:center;
 				font-size:10px;
 				border-bottom:solid 1px #BCBCBC;
 			}
-			.eventsCalendar-daysList.showAsWeek li {
+			.eventCalendar-daysList.eventCalendar-showAsWeek li {
 				height:auto; margin:0;
 			}
-				.eventsCalendar-daysList.showAsWeek li.empty {
+				.eventCalendar-daysList.eventCalendar-showAsWeek li.eventCalendar-empty {
 					background-color: #ccc;
 					min-height:27px;
 					border-top: solid 1px #ccc;
 				}
-			.eventsCalendar-day a {
-				text-decoration:non
-				e;
+			.eventCalendar-day a {
+				text-decoration:none;
 				font-size:10px;
 				color:#424242;
 			}
-			.eventsCalendar-day {
+			.eventCalendar-day {
 				border-left:solid 1px #BCBCBC;
 			}
-			.eventsCalendar-day a  {
+			.eventCalendar-day a  {
 				border:solid 1px #BCBCBC;
 				border-width:0 1px 1px 0;
 			}
-			.showAsWeek .eventsCalendar-day { border-left-width:0;}
-			.showAsWeek .eventsCalendar-day a  {
+			.eventCalendar-showAsWeek .eventCalendar-day { border-left-width:0;}
+			.eventCalendar-showAsWeek .eventCalendar-day a  {
 				border:solid 1px red;
 				border-color:#fff #BCBCBC #BCBCBC #eee;
 				line-height:27px;
 				font-size:11px;
 
 			}
-				.eventsCalendar-day a:hover {
+				.eventCalendar-day a:hover {
 					background-color:#E4E4E4;
 				/*	box-shadow:inset 5px 5px 10px #C1C1C1;
 					text-shadow: 2px 2px 2px #C1C1C1;*/
 				}
-			.eventsCalendar-daysList li.today a {
+			.eventCalendar-daysList li.today a {
 				color:#fff;
 				background:#aaa;
 			/*	box-shadow:inset 5px 5px 10px #777;
 				text-shadow: 2px 2px 2px #777;*/
 			}
-				li.eventsCalendar-day.today a:hover {
+				li.eventCalendar-day.today a:hover {
 					background-color:#ccc;
 					/*box-shadow:inset 5px 5px 10px #999;*/
 				}
 
-			.eventsCalendar-daysList li.dayWithEvents a {
+			.eventCalendar-daysList li.eventCalendar-dayWithEvents a {
 				background:#89B814;
 				/*box-shadow:inset 5px 5px 10px #698B10;
 				text-shadow: 2px 2px 2px #698B10;*/
 				color:#fff;
 			}
-				li.eventsCalendar-day.dayWithEvents a:hover {
+				li.eventCalendar-day.eventCalendar-dayWithEvents a:hover {
 					background-color:#C2D374;
 					/*box-shadow:inset 5px 5px 10px #89B814;
 					text-shadow: 2px 2px 2px #89B814;*/
 				}
 
 
-			.eventsCalendar-daysList li.current a {
+			.eventCalendar-daysList li.current a {
 				color:#fff;
 				background:#449FB2;
 				box-shadow:inset 5px 5px 10px #216B7A;
 				text-shadow: 2px 2px 2px #216B7A;
 			}
-				li.eventsCalendar-day.current a:hover {
+				li.eventCalendar-day.current a:hover {
 					background-color:#79BDCC;
 					box-shadow:inset 5px 5px 10px #449FB2;
 					text-shadow: 2px 2px 2px #449FB2;
 				}
-		.eventsCalendar-loading {
+		.eventCalendar-loading {
 			border-radius:4px;
 			margin:5px auto;
 			padding:0 10px;
@@ -190,38 +189,38 @@
 			top:25px;
 			left:5px;
 		}
-			.eventsCalendar-loading.error {
+			.eventCalendar-loading.error {
 				background-color:red;
 			}
 
-.eventsCalendar-subtitle { padding-top:10px;}
-.eventsCalendar-list-wrap {
+.eventCalendar-subtitle { padding-top:10px;}
+.eventCalendar-list-wrap {
 	min-height:100px;
 	position:relative;
 }
-	.eventsCalendar-list-content.scrollable {
+	.eventCalendar-list-content.scrollable {
 
 		height:100px;
 		overflow-y:auto;
 		margin:0 5px 5px 0;
 	}
-	.eventsCalendar-list {
+	.eventCalendar-list {
 		margin:0; padding:0; list-style-type:none;
 	}
-	.eventsCalendar-list li {
+	.eventCalendar-list li {
 		padding:0 5px 15px;
 		margin:0;
 		clear:both;
 	}
-		.eventsCalendar-list li time {
+		.eventCalendar-list li time {
 			font-size:10px;
 			line-height:13px;
 		}
-		.eventsCalendar-list li time em {
+		.eventCalendar-list li time em {
 			float:left;
 			font-style:normal;
 		}
-		.eventsCalendar-list li time small {
+		.eventCalendar-list li time small {
 			font-size:10px;
 			float:left;
 			background-color:#807E7E;
@@ -229,25 +228,25 @@
 			padding:0 5px 0 4px;
 			margin:0 0 0 3px;
 		}
-		.eventsCalendar-list li .eventTitle {
+		.eventCalendar-list li .eventCalendar-eventTitle {
 			display:block;
 			clear:both;
 
 			font-weight:bold;
 			text-decoration:none;
 		}
-			.eventsCalendar-list li a.eventTitle {
+			.eventCalendar-list li a.eventCalendar-eventTitle {
 				color:#0E8EAB;
 			}
-			.eventsCalendar-list li a.eventTitle:hover { text-decoration:underline;}
-		.eventsCalendar-list li .eventDesc {
+			.eventCalendar-list li a.eventCalendar-eventTitle:hover { text-decoration:underline;}
+		.eventCalendar-list li .eventDesc {
 			clear: both;
 			margin:0 0 5px 0;
 			font-size:80%;
 			line-height:1.2em;
 
 		}
-		.eventsCalendar-list .eventsCalendar-noEvents {
+		.eventCalendar-list .eventCalendar-noEvents {
 			font-size:120%;
 			border-radius:4px;
 			margin:5px;

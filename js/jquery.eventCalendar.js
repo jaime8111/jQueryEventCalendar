@@ -1,11 +1,13 @@
 /* =
     jquery.eventCalendar.js
-    version: 0.67
-    date: 14-03-2015
+    version: 0.68
+    date: 17-07-2015
     author:
         Jaime Fernandez (@vissit)
     company:
         Paradigma Tecnologico (@paradigmate)
+    url:
+   		http://www.vissit.com/projects/eventCalendar/
 */
 ;(function( $ ) {
 	$.fn.eventCalendar = function(options){
@@ -23,10 +25,10 @@
 		this.each(function(){
 
 			flags.wrap = $(this);
-			flags.wrap.addClass('eventCalendar-wrap').append("<div class='eventsCalendar-list-wrap'><p class='eventsCalendar-subtitle'></p><span class='eventsCalendar-loading'>"+eventsOpts.txt_loading+"</span><div class='eventsCalendar-list-content'><ul class='eventsCalendar-list'></ul></div></div>");
+			flags.wrap.addClass('eventCalendar-wrap').append("<div class='eventCalendar-list-wrap'><p class='eventCalendar-subtitle'></p><span class='eventCalendar-loading'>"+eventsOpts.txt_loading+"</span><div class='eventCalendar-list-content'><ul class='eventCalendar-list'></ul></div></div>");
 
 			if (eventsOpts.eventsScrollable) {
-				flags.wrap.find('.eventsCalendar-list-content').addClass('scrollable');
+				flags.wrap.find('.eventCalendar-list-content').addClass('scrollable');
 			}
 
 			setCalendarWidth();
@@ -42,8 +44,8 @@
 
 			changeMonth();
 
-			flags.wrap.on('click','.eventsCalendar-day a',function(e){
-			//flags.wrap.find('.eventsCalendar-day a').live('click',function(e){
+			flags.wrap.on('click','.eventCalendar-day a',function(e){
+			//flags.wrap.find('.eventCalendar-day a').live('click',function(e){
 				e.preventDefault();
 				var year = flags.wrap.attr('data-current-year'),
 					month = flags.wrap.attr('data-current-month'),
@@ -51,8 +53,8 @@
 
 				getEvents(false, year, month,day, "day");
 			});
-			flags.wrap.on('click','.eventsCalendar-monthTitle', function(e){
-			//flags.wrap.find('.eventsCalendar-monthTitle').live('click',function(e){
+			flags.wrap.on('click','.eventCalendar-monthTitle', function(e){
+			//flags.wrap.find('.eventCalendar-monthTitle').live('click',function(e){
 				e.preventDefault();
 				var year = flags.wrap.attr('data-current-year'),
 					month = flags.wrap.attr('data-current-month');
@@ -65,11 +67,11 @@
 		});
 
 		// show event description
-		flags.wrap.find('.eventsCalendar-list').on('click','.eventsCalendar-eventTitle',function(e){
-		//flags.wrap.find('.eventsCalendar-list .eventsCalendar-eventTitle').live('click',function(e){
+		flags.wrap.find('.eventCalendar-list').on('click','.eventCalendar-eventTitle',function(e){
+		//flags.wrap.find('.eventCalendar-list .eventCalendar-eventTitle').live('click',function(e){
 			if(!eventsOpts.showDescription) {
 				e.preventDefault();
-				var desc = $(this).parent().find('.eventsCalendar-eventDesc');
+				var desc = $(this).parent().find('.eventCalendar-eventDesc');
 
 				if (!desc.find('a').size()) {
 					var eventUrl = $(this).attr('href');
@@ -83,7 +85,7 @@
 					desc.slideUp();
 				} else {
 					if(eventsOpts.onlyOneDescription) {
-						flags.wrap.find('.eventsCalendar-eventDesc').slideUp();
+						flags.wrap.find('.eventCalendar-eventDesc').slideUp();
 					}
 					desc.slideDown();
 				}
@@ -99,22 +101,22 @@
 		};
 
 		function dateSlider(show) {
-			var $eventsCalendarSlider = $("<div class='eventsCalendar-slider'></div>"),
-				$eventsCalendarMonthWrap = $("<div class='eventsCalendar-monthWrap'></div>"),
-				$eventsCalendarTitle = $("<div class='eventsCalendar-currentTitle'><a href='#' class='eventsCalendar-monthTitle'></a></div>"),
-				$eventsCalendarArrows = $("<a href='#' class='eventsCalendar-arrow eventsCalendar-prev'><span>" + eventsOpts.txt_prev + "</span></a><a href='#' class='eventsCalendar-arrow eventsCalendar-next'><span>" + eventsOpts.txt_next + "</span></a>");
-				$eventsCalendarDaysList = $("<ul class='eventsCalendar-daysList'></ul>"),
+			var $eventsCalendarSlider = $("<div class='eventCalendar-slider'></div>"),
+				$eventsCalendarMonthWrap = $("<div class='eventCalendar-monthWrap'></div>"),
+				$eventsCalendarTitle = $("<div class='eventCalendar-currentTitle'><a href='#' class='eventCalendar-monthTitle'></a></div>"),
+				$eventsCalendarArrows = $("<a href='#' class='eventCalendar-arrow eventCalendar-prev'><span>" + eventsOpts.txt_prev + "</span></a><a href='#' class='eventCalendar-arrow eventCalendar-next'><span>" + eventsOpts.txt_next + "</span></a>");
+				$eventsCalendarDaysList = $("<ul class='eventCalendar-daysList'></ul>"),
 				date = new Date();
 
-			if ( !flags.wrap.find('.eventsCalendar-slider').size() ) {
+			if ( !flags.wrap.find('.eventCalendar-slider').size() ) {
 				flags.wrap.prepend($eventsCalendarSlider);
 				$eventsCalendarSlider.append($eventsCalendarMonthWrap);
 			} else {
-				flags.wrap.find('.eventsCalendar-slider').append($eventsCalendarMonthWrap);
+				flags.wrap.find('.eventCalendar-slider').append($eventsCalendarMonthWrap);
 			}
 
-			flags.wrap.find('.eventsCalendar-monthWrap.eventsCalendar-currentMonth').removeClass('eventsCalendar-currentMonth').addClass('eventsCalendar-oldMonth');
-			$eventsCalendarMonthWrap.addClass('eventsCalendar-currentMonth').append($eventsCalendarTitle, $eventsCalendarDaysList);
+			flags.wrap.find('.eventCalendar-monthWrap.eventCalendar-currentMonth').removeClass('eventCalendar-currentMonth').addClass('eventCalendar-oldMonth');
+			$eventsCalendarMonthWrap.addClass('eventCalendar-currentMonth').append($eventsCalendarTitle, $eventsCalendarDaysList);
 
 
 
@@ -155,18 +157,18 @@
 				.attr('data-current-year',year);
 
 			// add current date info
-			$eventsCalendarTitle.find('.eventsCalendar-monthTitle').html(eventsOpts.monthNames[month] + " " + year);
+			$eventsCalendarTitle.find('.eventCalendar-monthTitle').html(eventsOpts.monthNames[month] + " " + year);
 
 			// print all month days
 			var daysOnTheMonth = 32 - new Date(year, month, 32).getDate();
 			var daysList = [],
 				i;
 			if (eventsOpts.showDayAsWeeks) {
-				$eventsCalendarDaysList.addClass('eventsCalendar-showAsWeek');
+				$eventsCalendarDaysList.addClass('eventCalendar-showAsWeek');
 
 				// show day name in top of calendar
 				if (eventsOpts.showDayNameInCalendar) {
-					$eventsCalendarDaysList.addClass('eventsCalendar-showDayNames');
+					$eventsCalendarDaysList.addClass('eventCalendar-showDayNames');
 
 					i = 0;
 					// if week start on monday
@@ -175,11 +177,11 @@
 					}
 
 					for (; i < 7; i++) {
-						daysList.push('<li class="eventsCalendar-day-header">'+eventsOpts.dayNamesShort[i]+'</li>');
+						daysList.push('<li class="eventCalendar-day-header">'+eventsOpts.dayNamesShort[i]+'</li>');
 
 						if (i === 6 && eventsOpts.startWeekOnMonday) {
 							// print sunday header
-							daysList.push('<li class="eventsCalendar-day-header">'+eventsOpts.dayNamesShort[0]+'</li>');
+							daysList.push('<li class="eventCalendar-day-header">'+eventsOpts.dayNamesShort[0]+'</li>');
 						}
 
 					}
@@ -194,7 +196,7 @@
 				if (weekDay < 0) { weekDay = 6; } // if -1 is because day starts on sunday(0) and week starts on monday
 
 				for (i = weekDay; i > 0; i--) {
-					daysList.push('<li class="eventsCalendar-day eventsCalendar-empty"></li>');
+					daysList.push('<li class="eventCalendar-day eventCalendar-empty"></li>');
 				}
 			}
 			for (dayCount = 1; dayCount <= daysOnTheMonth; dayCount++) {
@@ -203,7 +205,7 @@
 				if (day > 0 && dayCount === day && year === currentYear) {
 					dayClass = "today";
 				}
-				daysList.push('<li id="dayList_' + dayCount + '" rel="'+dayCount+'" class="eventsCalendar-day '+dayClass+'"><a href="#">' + dayCount + '</a></li>');
+				daysList.push('<li id="dayList_' + dayCount + '" rel="'+dayCount+'" class="eventCalendar-day '+dayClass+'"><a href="#">' + dayCount + '</a></li>');
 			}
 			$eventsCalendarDaysList.append(daysList.join(''));
 
@@ -243,7 +245,7 @@
 			}
 
 			//var month = month || '';
-			flags.wrap.find('.eventsCalendar-loading').fadeIn();
+			flags.wrap.find('.eventCalendar-loading').fadeIn();
 
 			if (eventsOpts.jsonData) {
 				// user send a json in the plugin params
@@ -266,8 +268,8 @@
 			}
 
 			if (day > '') {
-				flags.wrap.find('.eventsCalendar-current').removeClass('eventsCalendar-current');
-				flags.wrap.find('#dayList_'+day).addClass('eventsCalendar-current');
+				flags.wrap.find('.eventCalendar-current').removeClass('eventCalendar-current');
+				flags.wrap.find('#dayList_'+day).addClass('eventCalendar-current');
 			}
 		}
 
@@ -275,7 +277,7 @@
 			directionLeftMove = "-=" + flags.directionLeftMove;
 			eventContentHeight = "auto";
 
-			subtitle = flags.wrap.find('.eventsCalendar-list-wrap .eventsCalendar-subtitle');
+			subtitle = flags.wrap.find('.eventCalendar-list-wrap .eventCalendar-subtitle');
 
 			if ( !direction ) {
 				// first load
@@ -289,7 +291,7 @@
 					subtitle.html(eventsOpts.txt_SpecificEvents_prev + eventsOpts.monthNames[month] + " " + eventsOpts.txt_SpecificEvents_after);
 				}
 
-				if (direction === 'eventsCalendar-prev') {
+				if (direction === 'eventCalendar-prev') {
 					directionLeftMove = "+=" + flags.directionLeftMove;
 				} else if (direction === 'day' || direction === 'month') {
 					directionLeftMove = "+=0";
@@ -297,25 +299,24 @@
 				}
 			}
 
-			flags.wrap.find('.eventsCalendar-list').animate({
+			flags.wrap.find('.eventCalendar-list').animate({
 				opacity: eventsOpts.moveOpacity,
 				left: directionLeftMove,
 				height: eventContentHeight
 			}, eventsOpts.moveSpeed, function() {
-				flags.wrap.find('.eventsCalendar-list').css({'left':0, 'height': 'auto'}).hide();
-				//wrap.find('.eventsCalendar-list li').fadeIn();
+				flags.wrap.find('.eventCalendar-list').css({'left':0, 'height': 'auto'}).hide();
+				//wrap.find('.eventCalendar-list li').fadeIn();
 
 				var events = [];
 
 				data = $(data).sort(sortJson); // sort event by dates
-
 				// each event
-				if (data.length) {
+				if ( data.length ) {
 
 					// show or hide event description
 					var eventDescClass = '';
 					if(!eventsOpts.showDescription) {
-						eventDescClass = 'eventsCalendar-hidden';
+						eventDescClass = 'eventCalendar-hidden';
 					}
 					var eventLinkTarget = "_self";
 					if(eventsOpts.openEventInNewWindow) {
@@ -356,24 +357,23 @@
 						if (limit === 0 || limit > i) {
 							// if month or day exist then only show matched events
 
-							if ((month === false || month === eventMonth)
-									&& (day === '' || day === eventDay)
-									&& (year === '' || year === eventYear) // get only events of current year
+							if ((month === false || month == eventMonth)
+									&& (day === '' || day == eventDay)
+									&& (year === '' || year == eventYear) // get only events of current year
 								) {
 									// if initial load then load only future events
 									if (month === false && eventDate < new Date()) {
-
 									} else {
 										//eventStringDate = eventDay + "/" + eventMonthToShow + "/" + eventYear;
 										eventStringDate = moment(eventDate).format(eventsOpts.dateFormat);
 										var eventTitle;
 
 										if (event.url) {
-											var eventTitle = '<a href="'+event.url+'" target="' + eventLinkTarget + '" class="eventsCalendar-eventTitle">' + event.title + '</a>';
+											var eventTitle = '<a href="'+event.url+'" target="' + eventLinkTarget + '" class="eventCalendar-eventTitle">' + event.title + '</a>';
 										} else {
-											var eventTitle = '<span class="eventsCalendar-eventTitle">'+event.title+'</span>';
+											var eventTitle = '<span class="eventCalendar-eventTitle">'+event.title+'</span>';
 										}
-										events.push('<li id="' + key + '" class="'+event.type+'"><time datetime="'+eventDate+'"><em>' + eventStringDate + '</em><small>'+eventHour+":"+eventMinute+'</small></time>'+eventTitle+'<p class="eventsCalendar-eventDesc ' + eventDescClass + '">' + event.description + '</p></li>');
+										events.push('<li id="' + key + '" class="'+event.type+'"><time datetime="'+eventDate+'"><em>' + eventStringDate + '</em><small>'+eventHour+":"+eventMinute+'</small></time>'+eventTitle+'<p class="eventCalendar-eventDesc ' + eventDescClass + '">' + event.description + '</p></li>');
 										i++;
 									}
 							}
@@ -381,21 +381,22 @@
 
 						// add mark in the dayList to the days with events
 						if (eventYear == flags.wrap.attr('data-current-year') && eventMonth == flags.wrap.attr('data-current-month')) {
-							flags.wrap.find('.eventsCalendar-currentMonth .eventsCalendar-daysList #dayList_' + parseInt(eventDay)).addClass('eventsCalendar-dayWithEvents');
+							flags.wrap.find('.eventCalendar-currentMonth .eventCalendar-daysList #dayList_' + parseInt(eventDay)).addClass('eventCalendar-dayWithEvents');
 						}
 
 					});
 				}
+
 				// there is no events on this period
 				if (!events.length) {
-					events.push('<li class="eventsCalendar-noEvents"><p>' + eventsOpts.txt_noEvents + '</p></li>');
+					events.push('<li class="eventCalendar-noEvents"><p>' + eventsOpts.txt_noEvents + '</p></li>');
 				}
-				flags.wrap.find('.eventsCalendar-loading').hide();
+				flags.wrap.find('.eventCalendar-loading').hide();
 
-				flags.wrap.find('.eventsCalendar-list')
+				flags.wrap.find('.eventCalendar-list')
 					.html(events.join(''));
 
-				flags.wrap.find('.eventsCalendar-list').animate({
+				flags.wrap.find('.eventCalendar-list').animate({
 					opacity: 1,
 					height: "toggle"
 				}, eventsOpts.moveSpeed);
@@ -406,10 +407,10 @@
 		}
 
 		function changeMonth() {
-			flags.wrap.find('.eventsCalendar-arrow').click(function(e){
+			flags.wrap.find('.eventCalendar-arrow').click(function(e){
 				e.preventDefault();
 
-				if ($(this).hasClass('eventsCalendar-next')) {
+				if ($(this).hasClass('eventCalendar-next')) {
 					dateSlider("next");
 					var lastMonthMove = '-=' + flags.directionLeftMove;
 
@@ -418,25 +419,25 @@
 					var lastMonthMove = '+=' + flags.directionLeftMove;
 				}
 
-				flags.wrap.find('.eventsCalendar-monthWrap.eventsCalendar-oldMonth').animate({
+				flags.wrap.find('.eventCalendar-monthWrap.eventCalendar-oldMonth').animate({
 					opacity: eventsOpts.moveOpacity,
 					left: lastMonthMove
 				}, eventsOpts.moveSpeed, function() {
-					flags.wrap.find('.eventsCalendar-monthWrap.eventsCalendar-oldMonth').remove();
+					flags.wrap.find('.eventCalendar-monthWrap.eventCalendar-oldMonth').remove();
 				});
 			});
 		}
 
 		function showError(msg) {
-			flags.wrap.find('.eventsCalendar-list-wrap').html("<span class='eventsCalendar-loading eventsCalendar-error'>"+msg+" " +eventsOpts.eventsjson+"</span>");
+			flags.wrap.find('.eventCalendar-list-wrap').html("<span class='eventCalendar-loading eventCalendar-error'>"+msg+" " +eventsOpts.eventsjson+"</span>");
 		}
 
 		function setCalendarWidth(){
 			// resize calendar width on window resize
 			flags.directionLeftMove = flags.wrap.width();
-			flags.wrap.find('.eventsCalendar-monthWrap').width(flags.wrap.width() + 'px');
+			flags.wrap.find('.eventCalendar-monthWrap').width(flags.wrap.width() + 'px');
 
-			flags.wrap.find('.eventsCalendar-list-wrap').width(flags.wrap.width() + 'px');
+			flags.wrap.find('.eventCalendar-list-wrap').width(flags.wrap.width() + 'px');
 
 		}
 	};
