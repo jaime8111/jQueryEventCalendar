@@ -1,0 +1,83 @@
+/*= CORE CSS */
+.eventCalendar-hidden {
+  display: none;
+}
+.eventCalendar-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.eventCalendar-arrow {
+  position: absolute;
+  z-index: 5;
+  top: 3px;
+}
+.eventCalendar-prev {
+  left: 3px;
+}
+.eventCalendar-next {
+  right: 3px;
+}
+.eventCalendar-monthTitle {
+  display: block;
+  text-align: center;
+}
+.eventCalendar-monthWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.eventCalendar-currentMonth {
+  z-index: 1;
+}
+.eventCalendar-daysList {
+  display: table;
+  width: 100%;
+}
+.eventCalendar-daysList li {
+  display: table-cell;
+}
+.eventCalendar-daysList a {
+  padding: 0;
+  display: block;
+  text-align: center;
+  font-size: 8px;
+  min-width: 7px;
+}
+.eventCalendar-showAsWeek {
+  display: block;
+}
+.eventCalendar-showAsWeek li {
+  display: block;
+  float: left;
+  width: 14.28%;
+  height: 20px;
+}
+.eventCalendar-dayWithEvents {
+  background: rgba(0, 0, 0, 0.15);
+}
+.eventCalendar-current {
+  background: rgba(0, 0, 0, 0.35);
+}
+.eventCalendar-loading {
+  display: block;
+  min-width: 100px;
+  height: 40px;
+  line-height: 40px;
+}
+.eventCalendar-list {
+  position: relative;
+  z-index: 1;
+}
+.eventCalendar-oldEventList {
+  z-index: 2;
+}
+.eventCalendar-subtitle {
+  padding-left: 5px;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+/* end of core CSS new */
+
+/*# sourceMappingURL=eventCalendar.css.map */

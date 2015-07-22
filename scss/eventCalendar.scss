@@ -1,0 +1,111 @@
+//Imports
+@import "config/vars";
+
+/*= CORE CSS */
+
+.eventCalendar {
+
+  //Hidden
+  &-hidden {
+    display: none;
+  }
+
+  &-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &-arrow {
+    position: absolute;
+    z-index: 5;
+    top: 3px;
+  }
+
+  &-prev {
+    left: 3px;
+  }
+
+  &-next {
+    right: 3px;
+  }
+
+  &-monthTitle {
+    display: block;
+    text-align: center;
+  }
+
+  &-monthWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+  &-currentMonth {
+    z-index: 1;
+  }
+
+
+  //Days List
+  &-daysList {
+    display: table;
+    width: 100%;
+
+    li {
+      display: table-cell;
+    }
+
+    a {
+      padding: 0;
+      display: block;
+      text-align: center;
+      font-size: 8px;
+      min-width: 7px;
+    }
+
+  }
+
+  &-showAsWeek {
+    display: block;
+
+    li {
+      display: block;
+      float: left;
+      width: 14.28%;
+      height: 20px;
+    }
+  }
+
+  &-dayWithEvents {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  &-current {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  &-loading {
+    display: block;
+    min-width: 100px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  &-list {
+    position: relative;
+    z-index: 1;
+  }
+
+  &-oldEventList {
+    z-index: 2;
+  }
+
+  &-subtitle {
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 120%;
+  }
+
+}//eventCalendar
+
+/* end of core CSS new */
