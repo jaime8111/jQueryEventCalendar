@@ -1,0 +1,33 @@
+{
+    "locale": "es",
+    "txt_noEvents": "No hay eventos para este periodo",
+    "txt_SpecificEvents_prev": "Eventos de ",
+    "txt_SpecificEvents_after": ":",
+    "txt_next": "siguiente",
+    "txt_prev": "anterior",
+    "txt_NextEvents": "Próximos eventos:",
+    "txt_GoToEventUrl": "Ir al evento",
+    "txt_NumAbbrevTh": "",
+    "txt_NumAbbrevSt": "",
+    "txt_NumAbbrevNd": "",
+    "txt_NumAbbrevRd": "",
+    "txt_loading": "cargando...",
+    "moment": {
+        "months" : [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
+        "weekdaysShort" : [ "Dom","Lun","Mar","Mie",
+                "Jue","Vie","Sab" ],
+        "longDateFormat" : {
+            "LT" : "H:mm",
+            "LTS" : "LT:ss",
+            "L" : "DD/MM/YYYY",
+            "LL" : "D [de] MMMM [de] YYYY",
+            "LLL" : "D [de] MMMM [de] YYYY LT",
+            "LLLL" : "dddd, D [de] MMMM [de] YYYY LT"
+        },
+        "week" : {
+            "dow" : 1,
+            "doy" : 4
+        }
+    }
+}
