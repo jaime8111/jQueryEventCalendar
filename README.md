@@ -1,7 +1,7 @@
 jQuery Event Calendar:
 =================
 
-jQuery plugin to show events in a calendar in a very confortable way
+jQuery plugin to show events in a calendar in a very comfortable way
 
 Main features:
 * Fluid Calendar: calendar will be shown with the width of its parent. Size is recalculated on window resize. So you can use it in your responsive designs
