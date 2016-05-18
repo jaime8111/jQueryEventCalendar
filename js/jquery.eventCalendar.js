@@ -365,7 +365,7 @@
 				}
 				var eventLinkTarget = "_self";
 				if(eventsOpts.openEventInNewWindow) {
-					eventLinkTarget = '_target';
+					eventLinkTarget = '_blank';
 				}
 
 				var i = 0;
@@ -489,4 +489,3 @@
 
 
 })( jQuery );
-
