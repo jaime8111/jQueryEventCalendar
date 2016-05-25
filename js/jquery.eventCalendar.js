@@ -51,6 +51,8 @@
 			txt_GoToEventUrl: "See the event",
 			txt_loading: "loading..."
 		},
+        reloadDataOnMonthChange: false,
+        eventsjsonExtraData : "",
 		showDayAsWeeks: true,
 		startWeekOnMonday: true,
 		showDayNameInCalendar: true,
@@ -294,8 +296,12 @@
 
 		} else if (!eventsOpts.cacheJson || !direction) {
 			// first load: load json and save it to future filters
-			$.getJSON(eventsOpts.eventsjson + "?limit="+limit+"&year="+year+"&month="+month+"&day="+day, function(data) {
+			$.getJSON(eventsOpts.eventsjson + "?limit="+limit+"&year="+year+"&month="+month+"&day="+day+eventsOpts.eventsjsonExtraData, function(data) {
 				flags.eventsJson = data; // save data to future filters
+                if (eventsOpts.reloadDataOnMonthChange) {
+                    // we reset this to true so that it will not reload the data as we click around in a month
+                    eventsOpts.cacheJson = true;
+                }
 				getEventsData(flags, eventsOpts, flags.eventsJson, limit, year, month, day, direction);
 			}).error(function() {
 				showError("error getting json: ", flags.wrap);
@@ -455,7 +461,11 @@
 		flags.wrap.find('.eventCalendar-arrow').click(function(e){
 			e.preventDefault();
 			var lastMonthMove;
-
+            if (eventsOpts.reloadDataOnMonthChange) {
+                // setting the data and cache to false will cause the data to be reloaded
+                eventsOpts.jsonData = false;
+                eventsOpts.cacheJson = false;
+            }
 			if ($(this).hasClass('eventCalendar-next')) {
 				dateSlider("next", flags, eventsOpts);
 				lastMonthMove = '-=' + flags.directionLeftMove;
