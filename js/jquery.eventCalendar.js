@@ -148,9 +148,13 @@
 	}
 
 	function sortJson(a, b){
-		if ( typeof a.date === 'string' ) {
-			return a.date.toLowerCase() > b.date.toLowerCase() ? 1 : -1;
-		}
+		var DateObj;
+		
+		if ( typeof a.date === 'string' ) { //convert to object if date is a string
+			DateObj = Date.parse(date);
+			return a.DateObj> b.DateObj ? 1 : -1;
+		} 
+		
 		return a.date > b.date ? 1 : -1;
 	}
 
