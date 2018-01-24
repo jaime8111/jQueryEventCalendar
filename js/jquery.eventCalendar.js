@@ -271,7 +271,10 @@
 
 	function getEvents(flags, eventsOpts, limit, year, month, day, direction) {
 		limit = limit || 0;
-		year = year || '';
+
+		var today = new Date();
+
+		year = year || today.getFullYear();
 		day = day || '';
 
 		// to avoid problem with january (month = 0)
@@ -280,6 +283,9 @@
 			month = month;
 		} else {
 			month = '';
+		}
+		if (!month) {
+			month = today.getMonth();
 		}
 
 		//var month = month || '';
