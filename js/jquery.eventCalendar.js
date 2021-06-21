@@ -63,8 +63,9 @@
 		moveSpeed: 500,	// speed of month move when you clic on a new date
 		moveOpacity: 0.15, // month and events fadeOut to this opacity
 		jsonData: "", 	// to load and inline json (not ajax calls)
-		cacheJson: true	// if true plugin get a json only first time and after plugin filter events
+		cacheJson: true,	// if true plugin get a json only first time and after plugin filter events
 						// if false plugin get a new json on each date change
+		sortDirection: "desc"
 	};
 
 	function initEventCalendar(that, options) {
@@ -147,11 +148,23 @@
 		});
 	}
 
-	function sortJson(a, b){
-		if ( typeof a.date === 'string' ) {
-			return a.date.toLowerCase() > b.date.toLowerCase() ? 1 : -1;
+	function sortJsonDesc(a, b){
+		var DateObj;
+
+		if ( typeof a.date === 'string' ) { //convert to object if date is a string
+			DateObj = Date.parse(date);
+			return a.DateObj> b.DateObj ? 1 : -1;
 		}
 		return a.date > b.date ? 1 : -1;
+	}
+	function sortJsonAsc(a, b) {
+		var DateObj;
+
+		if ( typeof a.date === 'string' ) { //convert to object if date is a string
+			DateObj = Date.parse(date);
+			return a.DateObj> b.DateObj ? -1 : 1;
+		}
+		return a.date > b.date ? -1 : 1;
 	}
 
 	function dateSlider(show, flags, eventsOpts) {
@@ -353,8 +366,11 @@
 			//wrap.find('.eventCalendar-list li').fadeIn();
 
 			var events = [];
-
-			data = $(data).sort(sortJson); // sort event by dates
+			if (options.sortDirection == 'asc') {
+				data = $(data).sort(sortJsonAsc); // sort event by dates asc
+			} else {
+				data = $(data).sort(sortJsonDesc);// sort event by dates desc (default)
+			}
 			// each event
 			if ( data.length ) {
 
